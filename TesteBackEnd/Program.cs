@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using TesteBackEnd.Repositorios.Interfaces;
+using TesteBackEnd.Repositorios;
+using TesteBackEnd.Data;
+
 namespace TesteBackEnd
 {
     public class Program
@@ -12,6 +17,13 @@ namespace TesteBackEnd
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<ApiDBContext>(
+                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+                );
+
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 
