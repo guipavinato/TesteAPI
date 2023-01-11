@@ -6,6 +6,6 @@
         public string? Nome { get; set; }
         public DateOnly Nascimento { get; set; }
         public char? Cpf { get; set; }
-        public ICollection<TelefoneModel> Telefones { get; set; }
+        public ICollection<TelefoneModel>? Telefones { get; set; }
     }
 }
