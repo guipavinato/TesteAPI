@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TesteBackEnd.Data.Map;
 using TesteBackEnd.Models;
 
 namespace TesteBackEnd.Data
@@ -15,6 +16,8 @@ namespace TesteBackEnd.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new TelefoneMap());
             base.OnModelCreating(modelBuilder);
         }
     }
